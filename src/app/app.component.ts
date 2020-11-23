@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  usersService } from './usersService.service';
+import {  UsersService } from './UsersService.service';
 import { OnInit } from '@angular/core';
 import { stringify } from '@angular/compiler/src/util';
 
@@ -10,7 +10,7 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private activeInactive: usersService){}
+  constructor(private activeInactive: UsersService){}
 
   activeUsers = [];
   inactiveUsers = [];

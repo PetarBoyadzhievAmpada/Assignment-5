@@ -1,7 +1,7 @@
 import { convertUpdateArguments } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Component, Input } from '@angular/core';
-import { counterService } from '../counterService.service';
-import {  usersService } from '../usersService.service';
+import { CounterService } from '../CounterService.service';
+import {  UsersService } from '../UsersService.service';
 
 @Component({
   selector: 'app-active-users',
@@ -14,17 +14,17 @@ export class ActiveUsersComponent {
  
   
 
-  constructor(private inactiveChange: usersService,
-              private counterService:counterService){
+  constructor(private inactiveChange: UsersService,
+              private CounterService:CounterService){
 
-                this.counterService.counterServiceActive.subscribe((count:Number)=> 
+                this.CounterService.CounterServiceActive.subscribe((count:Number)=> 
                 console.log("Changed from Inactive to Active, count: " + count));
   }
  
   setInactive(id: number) {
-    this.inactiveChange.changedToInactive(id);
+    this.inactiveChange.setInactive(id);
       this.count++
-      this.counterService.counterServiceInactive.emit(this.count);
+      this.CounterService.CounterServiceInactive.emit(this.count);
         
   }
   

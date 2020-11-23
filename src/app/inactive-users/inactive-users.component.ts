@@ -1,7 +1,7 @@
 import { identifierModuleUrl } from '@angular/compiler/src/compile_metadata';
 import { Component, Input } from '@angular/core';
-import { counterService } from '../counterService.service';
-import { usersService } from '../usersService.service';
+import { CounterService } from '../CounterService.service';
+import { UsersService } from '../UsersService.service';
 
 @Component({
   selector: 'app-inactive-users',
@@ -12,10 +12,10 @@ export class InactiveUsersComponent {
   @Input() users: string[];
   count= 0;
 
-  constructor(private activeChange:usersService,
-              private counterService:counterService){
+  constructor(private activeChange:UsersService,
+              private CounterService:CounterService){
       
-          this.counterService.counterServiceInactive.subscribe(
+          this.CounterService.CounterServiceInactive.subscribe(
             (count:number) => console.log("Changed from Active to Inactive, count: " + count)
            );
 
@@ -24,8 +24,8 @@ export class InactiveUsersComponent {
 
 
   setActive(id:number) {
-   this.activeChange.changedToActive(id);
+   this.activeChange.setActive(id);
     this.count++;
-    this.counterService.counterServiceActive.emit(this.count);
+    this.CounterService.CounterServiceActive.emit(this.count);
   }
 }
