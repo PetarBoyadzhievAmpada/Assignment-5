@@ -15,16 +15,16 @@ export class ActiveUsersComponent {
   
 
   constructor(private inactiveChange: UsersService,
-              private CounterService:CounterService){
+              private counterService:CounterService){
 
-                this.CounterService.CounterServiceActive.subscribe((count:Number)=> 
+                this.counterService.onActive.subscribe((count:Number)=> 
                 console.log("Changed from Inactive to Active, count: " + count));
   }
  
   setInactive(id: number) {
     this.inactiveChange.setInactive(id);
       this.count++
-      this.CounterService.CounterServiceInactive.emit(this.count);
+      this.counterService.onInactive.emit(this.count);
         
   }
   

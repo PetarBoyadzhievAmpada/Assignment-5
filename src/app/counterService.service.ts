@@ -1,7 +1,7 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 
-
+@Injectable()
 export class CounterService{
-CounterServiceInactive= new EventEmitter<number>();
-CounterServiceActive = new EventEmitter<number>();
+onInactive= new EventEmitter<number>();
+onActive = new EventEmitter<number>();
 }
